@@ -2,6 +2,7 @@ package com.example.sullogwebview
 
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -14,9 +15,14 @@ class MainActivity : AppCompatActivity() {
     private var mWebSettings //웹뷰세팅
             : WebSettings? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val window = window
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 
         // 웹뷰 시작
         mWebView = findViewById<View>(R.id.webView) as WebView
@@ -32,6 +38,6 @@ class MainActivity : AppCompatActivity() {
         mWebSettings!!.layoutAlgorithm = WebSettings.LayoutAlgorithm.SINGLE_COLUMN // 컨텐츠 사이즈 맞추기
         mWebSettings!!.cacheMode = WebSettings.LOAD_NO_CACHE // 브라우저 캐시 허용 여부
         mWebSettings!!.domStorageEnabled = true // 로컬저장소 허용 여부
-        mWebView!!.loadUrl("https://sullog.vercel.app/") // 웹뷰에 표시할 웹사이트 주소, 웹뷰 시작
+        mWebView!!.loadUrl("https://sullog-674gcgbe1-drinkers.vercel.app/") // 웹뷰에 표시할 웹사이트 주소, 웹뷰 시작
     }
 }
